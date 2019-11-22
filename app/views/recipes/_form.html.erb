@@ -1,0 +1,59 @@
+<%= form_with(model: recipe, local: true, class: "form") do |form| %>
+  <% if recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :instructions %>
+    <%= form.text_area :instructions %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_to_prepare %>
+    <%= form.text_field :time_to_prepare %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feeds %>
+    <%= form.text_field :feeds %>
+  </div>
+
+  <h2>Ingredients</h2>
+  <div data-controller="nested-form-field">
+    <template data-target="nested-form-field.template">
+      <%= form.fields_for :ingredients, Ingredient.new, child_index: 'NEW_RECORD' do |ingredient| %>
+        <%= render 'ingredient_fields', form: ingredient %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :ingredients do |ingredient| %>
+      <%= render "ingredient_fields", form: ingredient %>
+    <% end %>
+
+    <div class="mb-3" data-target="nested-form-field.links">
+      <%= link_to "Add Ingredient", "#", class: "btn btn-outline-primary", data: { action: "click->nested-form-field#add_association" } %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
