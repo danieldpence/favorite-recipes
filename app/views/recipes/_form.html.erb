@@ -55,5 +55,8 @@
 
   <div class="actions">
     <%= form.submit %>
+
+    <% path = recipe.persisted? ? recipe : recipes_path %>
+    <%= link_to "Cancel", recipe, class: "btn btn-link" %>
   </div>
 <% end %>
