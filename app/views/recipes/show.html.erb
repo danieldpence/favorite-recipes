@@ -1,34 +1,19 @@
-<p id="notice"><%= notice %></p>
+<section class="container mx-auto mt-8">
+  <div class="md:flex bg-white mb-8 shadow-lg rounded-lg overflow-hidden">
+    <%= image_tag("https://lorempixel.com/1000/800/food", class: "md:w-1/3 md:flex-shrink-0") %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+    <div class="p-8 md:flex-shrink-1">
+      <h3 class="text-2xl mb-4"><%= @recipe.name %></h3>
+      <p class="text-base mb-4"><%= @recipe.description %></p>
+      <div class="mb-4">
+        <p class="mr-2 block"><span class="font-semibold">Feeds: </span><%= @recipe.feeds %></p>
+        <p class="block"><span class="font-semibold">Prep Time <small>(approx.)</small>: </span><%= @recipe.time_to_prepare %></p>
+      </div>
+      <p class="mb-4 block"><span class="font-semibold">Ingredients: </span><%= ingredient_list_for(@recipe) %></p>
+      <p class="mb-4 block"><span class="font-semibold">Instructions: </span><%= @recipe.instructions %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @recipe.description %>
-</p>
-
-<p>
-  <strong>Instructions:</strong>
-  <%= @recipe.instructions %>
-</p>
-
-<p>
-  <strong>Time to prepare:</strong>
-  <%= @recipe.time_to_prepare %>
-</p>
-
-<p>
-  <strong>Feeds:</strong>
-  <%= @recipe.feeds %>
-</p>
-
-<p>
-  <strong>Ingredients:</strong>
-  <%= ingredient_list_for(@recipe) %>
-</p>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+  <%= link_to 'Back', recipes_path %>
+</section>
