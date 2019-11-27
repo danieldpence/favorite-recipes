@@ -5,15 +5,13 @@
         class: "bg-white shadow-md rounded px-8 pt-6 pb-8"
       }, url: session_path(resource_name)) do |f| %>
       <div class="mb-4">
-        <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",
-            class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        <%= f.label :email, class: "form-field-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-field" %>
       </div>
 
       <div class="mb-4">
-        <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= f.password_field :password, autocomplete: "current-password",
-            class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        <%= f.label :password, class: "form-field-label" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "text-field" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
