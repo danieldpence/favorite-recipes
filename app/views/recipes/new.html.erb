@@ -1,7 +1,6 @@
-<section>
-  <h1>New Recipe</h1>
-
-  <%= render 'form', recipe: @recipe %>
-
-  <%= link_to 'Back', recipes_path %>
+<section class="container mx-auto px-6 py-8 lg:px-0">
+  <div class="mx-auto">
+    <h2 class="font-semibold text-2xl mb-4">Add New Recipe</h2>
+    <%= render 'form', recipe: @recipe %>
+  </div>
 </section>
