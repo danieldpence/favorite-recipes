@@ -1,6 +1,30 @@
 @tailwind utilities;
 @tailwind base;
 
+.btn {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+}
+
+.btn:focus {
+  @apply bg-blue-700 outline-none shadow-outline;
+}
+
+.btn:hover {
+  @apply bg-blue-700 outline-none shadow-outline;
+}
+
+.btn-danger {
+  @apply btn bg-red-600;
+}
+
+.btn-danger:focus {
+  @apply bg-red-700;
+}
+
+.btn-danger:hover {
+  @apply bg-red-700;
+}
+
 .text-field {
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
