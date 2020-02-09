@@ -6,4 +6,7 @@ class User < ApplicationRecord
   
   has_many :recipes, dependent: :destroy
   has_one_attached :avatar
+
+  validates :email, :name, presence: true
+  validates :email, uniqueness: true
 end

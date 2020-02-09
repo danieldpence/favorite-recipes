@@ -1,15 +1,25 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the RecipesHelper. For example:
-#
-# describe RecipesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe RecipesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe ".ingredient_list_for(recipe)" do
+    let(:recipe) { create(:recipe) }
+    
+    context "with ingredients present" do
+      before do
+        2.times do
+          recipe.ingredients.create(attributes_for(:ingredient))
+        end
+      end
+
+      it "returns a comma-separated list of ingredient names" do
+        expect(helper.ingredient_list_for(recipe)).to eq("name, name")
+      end
+    end
+
+    context "when no ingedients present" do
+      it "returns an emtpy string if no ingredients present" do
+        expect(helper.ingredient_list_for(recipe)).to eq("")
+      end
+    end
+  end
 end
