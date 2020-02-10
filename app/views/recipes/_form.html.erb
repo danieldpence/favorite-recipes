@@ -1,19 +1,32 @@
 <%= form_with(model: recipe, local: true, class: "md:flex md:flex-wrap") do |form| %>
-  <% if recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+  <div class="md:w-full">
+    <% if recipe.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
-      <ul>
-        <% recipe.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+          <% recipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <% if recipe.image.attached? %>
+      <div class=" block mb-4">
+        <%= image_tag(@recipe.image, class: "") %>
+      </div>
+    <% end %>
+  </div>
   <div class="md:w-1/2 md:pr-8">
     <div class="mb-4">
       <%= form.label :name, class: "form-field-label" %>
       <%= form.text_field :name, class: "text-field" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :image, class: "form-field-label" %>
+      <%= form.file_field :image, class: "text-field" %>
     </div>
 
     <div class="mb-4">
