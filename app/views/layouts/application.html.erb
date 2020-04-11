@@ -11,6 +11,20 @@
 
   <body>
     <%= render 'layouts/nav' %>
+
+    <% if flash[:alert] %>
+      <div role="alert">
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+          Uh oh!
+        </div>
+        <% flash.each do |type, msg| %>
+          <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            <p><%= msg %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

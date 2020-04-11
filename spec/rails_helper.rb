@@ -46,7 +46,11 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
-    driven_by(:selenium_chrome_headless)
+    if ENV['BROWSER']
+      driven_by(:selenium_chrome)
+    else
+      driven_by(:selenium_chrome_headless)
+    end
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
