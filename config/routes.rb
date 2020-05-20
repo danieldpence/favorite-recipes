@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     resources :ingredients
   end
 
-  root to: "recipes#index"
+  root to: "pages#index"
 end

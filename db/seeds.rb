@@ -12,7 +12,7 @@ demo_user = User.create!(name: Faker::Name.name, email: "demo@example.com", pass
   recipe = Recipe.create!({
     name: Faker::Food.dish,
     description: Faker::Food.description,
-    instructions: "",
+    instructions: Faker::Hipster.sentences(number: rand(3..10)),
     time_to_prepare: "#{rand(15..120)} minutes",
     feeds: "4-6",
     user: demo_user})
