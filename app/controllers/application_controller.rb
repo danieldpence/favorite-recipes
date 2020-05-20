@@ -9,5 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:avatar]) # add :full_name, etc later
   end
 
-
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || recipes_path
+  end
 end
